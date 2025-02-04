@@ -1,0 +1,17 @@
+c:\Users\smaur\Code\Kea\SystemIntegration\Assignments\01a\FileParser\bin\Debug\net9.0\FileParser.exe
+c:\Users\smaur\Code\Kea\SystemIntegration\Assignments\01a\FileParser\bin\Debug\net9.0\FileParser.deps.json
+c:\Users\smaur\Code\Kea\SystemIntegration\Assignments\01a\FileParser\bin\Debug\net9.0\FileParser.runtimeconfig.json
+c:\Users\smaur\Code\Kea\SystemIntegration\Assignments\01a\FileParser\bin\Debug\net9.0\FileParser.dll
+c:\Users\smaur\Code\Kea\SystemIntegration\Assignments\01a\FileParser\bin\Debug\net9.0\FileParser.pdb
+c:\Users\smaur\Code\Kea\SystemIntegration\Assignments\01a\FileParser\obj\Debug\net9.0\FileParser.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\smaur\Code\Kea\SystemIntegration\Assignments\01a\FileParser\obj\Debug\net9.0\FileParser.AssemblyInfoInputs.cache
+c:\Users\smaur\Code\Kea\SystemIntegration\Assignments\01a\FileParser\obj\Debug\net9.0\FileParser.AssemblyInfo.cs
+c:\Users\smaur\Code\Kea\SystemIntegration\Assignments\01a\FileParser\obj\Debug\net9.0\FileParser.csproj.CoreCompileInputs.cache
+c:\Users\smaur\Code\Kea\SystemIntegration\Assignments\01a\FileParser\obj\Debug\net9.0\FileParser.dll
+c:\Users\smaur\Code\Kea\SystemIntegration\Assignments\01a\FileParser\obj\Debug\net9.0\refint\FileParser.dll
+c:\Users\smaur\Code\Kea\SystemIntegration\Assignments\01a\FileParser\obj\Debug\net9.0\FileParser.pdb
+c:\Users\smaur\Code\Kea\SystemIntegration\Assignments\01a\FileParser\obj\Debug\net9.0\FileParser.genruntimeconfig.cache
+c:\Users\smaur\Code\Kea\SystemIntegration\Assignments\01a\FileParser\obj\Debug\net9.0\ref\FileParser.dll
+c:\Users\smaur\Code\Kea\SystemIntegration\Assignments\01a\FileParser\bin\Debug\net9.0\YamlDotNet.dll
+c:\Users\smaur\Code\Kea\SystemIntegration\Assignments\01a\FileParser\obj\Debug\net9.0\FileParser.csproj.AssemblyReference.cache
+c:\Users\smaur\Code\Kea\SystemIntegration\Assignments\01a\FileParser\obj\Debug\net9.0\FileParser.csproj.Up2Date

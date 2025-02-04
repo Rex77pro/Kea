@@ -1,0 +1,8 @@
+<pokemon>
+    <nationalNo>94</nationalNo>
+    <name>Gengar</name>
+    <types>
+        <type>Ghost</type>
+        <type>Poison</type>
+    </types>
+</pokemon>  
