@@ -15,3 +15,4 @@ c:\Users\smaur\Code\Kea\SystemIntegration\Assignments\01a\FileParser\obj\Debug\n
 c:\Users\smaur\Code\Kea\SystemIntegration\Assignments\01a\FileParser\bin\Debug\net9.0\YamlDotNet.dll
 c:\Users\smaur\Code\Kea\SystemIntegration\Assignments\01a\FileParser\obj\Debug\net9.0\FileParser.csproj.AssemblyReference.cache
 c:\Users\smaur\Code\Kea\SystemIntegration\Assignments\01a\FileParser\obj\Debug\net9.0\FileParser.csproj.Up2Date
+c:\Users\smaur\Code\Kea\SystemIntegration\Assignments\01a\FileParser\obj\Debug\net9.0\FileParser.sourcelink.json
