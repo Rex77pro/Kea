@@ -1,5 +1,7 @@
-{
-    "nationalNo": 94,
-    "name": "Gengar",
-    "types": ["Ghost", "Poison"]
+{  
+    "pokemon": {
+        "nationalNo": 94,
+        "name": "Gengar",
+        "types": ["Ghost", "Poison"]
+    }
 }

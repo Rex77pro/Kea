@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "w2CJjszfUr4=",
+  "dgSpecHash": "o8iFER51j0w=",
   "success": true,
-  "projectFilePath": "c:\\Users\\smaur\\Code\\Kea\\SystemIntegration\\Assignments\\01a\\FileParser\\FileParser.csproj",
+  "projectFilePath": "C:\\Users\\smaur\\Code\\Kea\\SystemIntegration\\Assignments\\01a\\FileParser\\FileParser.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\smaur\\.nuget\\packages\\yamldotnet\\16.3.0\\yamldotnet.16.3.0.nupkg.sha512"
   ],

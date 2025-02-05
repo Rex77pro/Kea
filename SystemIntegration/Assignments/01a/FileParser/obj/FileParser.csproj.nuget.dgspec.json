@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\smaur\\Code\\Kea\\SystemIntegration\\Assignments\\01a\\FileParser\\FileParser.csproj": {}
+    "C:\\Users\\smaur\\Code\\Kea\\SystemIntegration\\Assignments\\01a\\FileParser\\FileParser.csproj": {}
   },
   "projects": {
-    "c:\\Users\\smaur\\Code\\Kea\\SystemIntegration\\Assignments\\01a\\FileParser\\FileParser.csproj": {
+    "C:\\Users\\smaur\\Code\\Kea\\SystemIntegration\\Assignments\\01a\\FileParser\\FileParser.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\smaur\\Code\\Kea\\SystemIntegration\\Assignments\\01a\\FileParser\\FileParser.csproj",
+        "projectUniqueName": "C:\\Users\\smaur\\Code\\Kea\\SystemIntegration\\Assignments\\01a\\FileParser\\FileParser.csproj",
         "projectName": "FileParser",
-        "projectPath": "c:\\Users\\smaur\\Code\\Kea\\SystemIntegration\\Assignments\\01a\\FileParser\\FileParser.csproj",
+        "projectPath": "C:\\Users\\smaur\\Code\\Kea\\SystemIntegration\\Assignments\\01a\\FileParser\\FileParser.csproj",
         "packagesPath": "C:\\Users\\smaur\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\smaur\\Code\\Kea\\SystemIntegration\\Assignments\\01a\\FileParser\\obj\\",
+        "outputPath": "C:\\Users\\smaur\\Code\\Kea\\SystemIntegration\\Assignments\\01a\\FileParser\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\smaur\\AppData\\Roaming\\NuGet\\NuGet.Config",
