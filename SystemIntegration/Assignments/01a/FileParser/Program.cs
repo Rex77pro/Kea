@@ -1,11 +1,13 @@
 ﻿using System;
 
-FileReader.ReadXmlFile();
+//FileReader.ReadXmlFile();
 
-FileReader.ReadYamlFile();
+//FileReader.ReadYamlFile();
 
-FileReader.ReadTxtFile();
+//FileReader.ReadTxtFile();
 
-FileReader.ReadCsvFile();
+//FileReader.ReadCsvFile();
 
-FileReader.ReadJsonFile();
+//FileReader.ReadJsonFile();
+
+EncodeDecodeString.EncodeDecode();
