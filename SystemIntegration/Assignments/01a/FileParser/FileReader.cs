@@ -7,7 +7,8 @@ using System.Xml.Serialization;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
-static class FileReader{
+static class FileReader
+{
     private static string filePath = @"..\..\..\..\Files\Pokemon";
 
     public static void ReadXmlFile()
@@ -17,9 +18,10 @@ static class FileReader{
             Pokemon? pokemon = (Pokemon?)new XmlSerializer(typeof(Pokemon)).Deserialize(fs);
 
             System.Console.WriteLine("XML File");
+            System.Console.WriteLine(pokemon?.NationalNo);
             System.Console.WriteLine(pokemon?.Name);
+            Console.WriteLine("Types: " + string.Join(", ", pokemon.Types ?? new List<string>()));
             System.Console.WriteLine();
-
         }
     } 
 
@@ -63,7 +65,7 @@ static class FileReader{
                     // Tildel værdier baseret på nøglen
                     switch (key)
                     {
-                        case "national no":
+                        case "nationalno":
                             pokemon.NationalNo = int.Parse(value);
                             break;
                         case "name":
@@ -102,29 +104,98 @@ static class FileReader{
                     Types = new List<string> { values[2] } 
                 };
                 System.Console.WriteLine("Csv File");
-                System.Console.WriteLine($"#{pokemon.NationalNo} -- {pokemon.Name} -- {string.Join(", ", pokemon.Types)}");
+                System.Console.WriteLine($"#{pokemon.NationalNo} - {pokemon.Name} - {string.Join(", ", pokemon.Types)}");
                 System.Console.WriteLine();
             }
 
         }
     }
 
-    public static void ReadJsonFile()
+    public static async void ReadJsonFile()
     {
-        using (FileStream fs = File.OpenRead(filePath + ".json"))
+        string fullPath = filePath + ".json";
+
+        if(!File.Exists(fullPath))
         {
-            Pokemon? pokemon = JsonSerializer.Deserialize<Pokemon>(fs);
+            Console.WriteLine("Filen blev ikke fundet: " + fullPath);
+            return;
+        }
+
+        try 
+        {
+            using FileStream fs = File.OpenRead(fullPath);
+            var opts = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+
+            Pokemon? pokemon = await JsonSerializer.DeserializeAsync<Pokemon>(fs, opts);
 
             if (pokemon != null)
             {
                 System.Console.WriteLine("Json File");
-                System.Console.WriteLine(pokemon.Name);
+                System.Console.WriteLine(pokemon.Name); 
                 System.Console.WriteLine();
             }
             else
             {
                 System.Console.WriteLine();
             }
+        } catch (Exception ex)
+        {
+            Console.WriteLine("Der opstod en fejl under parsing af JSON: " + ex.Message);
         }
+        
+    }
+
+    public static async Task JsonFileReader()
+    {
+        string fullPath = filePath + ".json";
+
+        if(!File.Exists(fullPath))
+        {
+            Console.WriteLine("Filen blev ikke fundet: " + fullPath);
+            return;
+        }
+
+        try
+            {
+                using FileStream fs = File.OpenRead(fullPath);
+                var options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+
+                // Brug JsonDocument til at læse hele JSON-strukturen
+                using JsonDocument doc = await JsonDocument.ParseAsync(fs);
+                JsonElement root = doc.RootElement;
+
+                // Tjek om "pokemon"-noden findes
+                if (root.TryGetProperty("pokemon", out JsonElement pokemonElement))
+                {
+                    // Deserialiser "pokemon"-noden til et Pokemon-objekt
+                    Pokemon? pokemon = JsonSerializer.Deserialize<Pokemon>(pokemonElement.GetRawText(), options);
+
+                    if (pokemon != null)
+                    {
+                        Console.WriteLine("JSON File:");
+                        Console.WriteLine($"National No: {pokemon.NationalNo}");
+                        Console.WriteLine($"Name: {pokemon.Name}");
+                        Console.WriteLine("Types: " + string.Join(", ", pokemon.Types ?? new List<string>()));
+                    }
+                    else
+                    {
+                        Console.WriteLine("Kunne ikke deserialisere 'pokemon'-noden.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Nøglen 'pokemon' blev ikke fundet i JSON-filen.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Der opstod en fejl under parsing af JSON: " + ex.Message);
+            }
     }
 }

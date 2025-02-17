@@ -81,7 +81,7 @@ class Parser{
                 const result = {};
 
                 lines.forEach(line => {
-                    const [key, value] = line.split(:).map(part => part.trim());
+                    const [key, value] = line.split(':').map(part => part.trim());
                     if (key === 'types') {
                         result[key] = value.split(', ').map(type => type.trim());
                     } else if (key === 'nationalNo') {
