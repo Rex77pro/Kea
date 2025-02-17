@@ -6,7 +6,6 @@ const xml2js = require('xml2js');
 const yaml = require('js-yaml');
 const { promiseHooks } = require('v8');
 const { type } = require('os');
-// import fs from 'fs/promises'
 
 class Parser{
     constructor(filePath) {
@@ -100,32 +99,3 @@ class Parser{
 
 }
 module.exports = Parser;
-
-export async function ParseCSV(filePath){
-    try {
-        const data = await fs.readFile(filePath, 'utf-8');
-        const lines = data.split('\n').filter(line => line.trim() !== '');
-
-        if (lines.length === 0) {
-            return [];
-        }
-
-        const headers = lines[0].split(',').map(header => header.trim());
-        const result = [];
-
-        for (let i = 1; i < lines.length; i++) {
-            const values = lines[i].split(',').map(value => value.trim());
-            const obj = {};
-
-            headers.forEach((header, index) => {
-                obj[header] = values[index];
-              });
-
-            result.push(obj);
-        }       
-
-        return result;
-    } catch (err) {
-        throw new Error(`Fejl ved læsning af CSV-fil: ${err.message}`);
-    }
-}
