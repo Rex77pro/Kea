@@ -1,13 +1,15 @@
 const Parser = require('./Parser');
 const Pokemon = require ('./Pokemon');
 
+import { ParseCSV } from './Parser.js';
+
 const filePath = 'C:\\Users\\smaur\\Code\\Kea\\SystemIntegration\\Assignments\\01a\\Files\\Pokemon';
 
 const XmlParser = new Parser(filePath + '.xml');
 const YamlParser = new Parser(filePath + '.yml');
 const JsonParser = new Parser(filePath + '.json');
 const TxtParser = new Parser(filePath + '.txt');
-const CsvParser = new Parser(filePath + '.csv');
+const CSVFilePath = filePath + '.csv';
 
 
 JsonParser.JsonFileParser()
@@ -85,3 +87,10 @@ TxtParser.TxtFileParser()
         console.error('Fejl:', error);
     });
 
+parseCSV(CSVFilePath)
+    .then(data => {
+    console.log('Parsed CSV data:', data);
+    })
+    .catch(error => {
+    console.error('Error parsing CSV:', error);
+    });
