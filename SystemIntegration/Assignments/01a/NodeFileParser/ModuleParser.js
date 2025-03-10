@@ -53,7 +53,6 @@ export async function ParseTxt(filePath){
     }
 }
 
-
 export async function ParseXml(filePath){
     try {
         const data = await fs.readFile(filePath, 'utf-8');

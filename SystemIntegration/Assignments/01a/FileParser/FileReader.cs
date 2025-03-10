@@ -7,13 +7,14 @@ using System.Xml.Serialization;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
-static class FileReader
+public static class FileReader
 {
     private static string filePath = @"..\..\..\..\Files\Pokemon";
 
-    public static void ReadXmlFile()
+    public static Pokemon ReadXmlFile()
     {
-        using (FileStream fs = File.OpenRead(filePath + ".xml"))
+        string fullPath = @"C:\Users\smaur\Code\Kea\SystemIntegration\Assignments\01a\Files\Pokemon.xml";
+        using (FileStream fs = File.OpenRead(fullPath))
         {
             Pokemon? pokemon = (Pokemon?)new XmlSerializer(typeof(Pokemon)).Deserialize(fs);
 
@@ -22,30 +23,44 @@ static class FileReader
             System.Console.WriteLine(pokemon?.Name);
             Console.WriteLine("Types: " + string.Join(", ", pokemon.Types ?? new List<string>()));
             System.Console.WriteLine();
+            return pokemon;
         }
     } 
 
-    public static void ReadYamlFile()
+    public static Pokemon? ReadYamlFile()
     {
-        var yamlContent = File.ReadAllText(filePath + ".yml");
+        string fullPath = @"C:\Users\smaur\Code\Kea\SystemIntegration\Assignments\01a\Files\Pokemon.yml";
+        var yamlContent = File.ReadAllText(fullPath);
 
-        var deserializer = new DeserializerBuilder().Build();
-        
-        var yamlObject = deserializer.Deserialize<object>(yamlContent);
-
-        var serializer = new SerializerBuilder()
+        // Byg en deserializer med en naming convention (f.eks. CamelCase) for at matche dine property-navne
+        var deserializer = new DeserializerBuilder()
+            .WithNamingConvention(CamelCaseNamingConvention.Instance)
             .Build();
+        
+        // Deserialiser YAML-indholdet direkte til et Pokemon-objekt
+        PokemonWrapper? wrapper = deserializer.Deserialize<PokemonWrapper>(yamlContent);
+        Pokemon? pokemon = wrapper?.Pokemon;
 
-        var yamlString = serializer.Serialize(yamlObject);
-
-        System.Console.WriteLine("Yaml File");
-        System.Console.WriteLine(yamlString);
-        System.Console.WriteLine();
+        Console.WriteLine("Yaml File");
+        if (pokemon != null)
+        {
+            Console.WriteLine($"NationalNo: {pokemon.NationalNo}");
+            Console.WriteLine($"Name: {pokemon.Name}");
+            Console.WriteLine("Types: " + string.Join(", ", pokemon.Types ?? new List<string>()));
+        }
+        else
+        {
+            Console.WriteLine("Kunne ikke deserialisere YAML-filen til et Pokemon-objekt.");
+        }
+        Console.WriteLine();
+        
+        return pokemon;
     }
 
-   public static void ReadTxtFile()
+   public static Pokemon ReadTxtFile()
     {
-        using (FileStream fs = File.OpenRead(filePath + ".txt"))
+        string fullPath = @"C:\Users\smaur\Code\Kea\SystemIntegration\Assignments\01a\Files\Pokemon.txt";
+        using (FileStream fs = File.OpenRead(fullPath))
         using (StreamReader reader = new StreamReader(fs))
         {
             // Opret en tom Pokémon
@@ -82,12 +97,14 @@ static class FileReader
             System.Console.WriteLine("Txt File");
             Console.WriteLine($"#{pokemon.NationalNo} - {pokemon.Name} ({string.Join(", ", pokemon.Types)})");
             System.Console.WriteLine();
+            return pokemon;
         }
     }
 
-    public static void ReadCsvFile()
+    public static Pokemon ReadCsvFile()
     {
-        using (FileStream fs = File.OpenRead(filePath + ".csv"))
+        string fullPath = @"C:\Users\smaur\Code\Kea\SystemIntegration\Assignments\01a\Files\Pokemon.csv";
+        using (FileStream fs = File.OpenRead(fullPath))
         using (StreamReader reader = new StreamReader(fs))
         {
             reader.ReadLine();
@@ -106,9 +123,11 @@ static class FileReader
                 System.Console.WriteLine("Csv File");
                 System.Console.WriteLine($"#{pokemon.NationalNo} - {pokemon.Name} - {string.Join(", ", pokemon.Types)}");
                 System.Console.WriteLine();
+                return pokemon;
             }
 
         }
+        return null;
     }
 
     public static async void ReadJsonFile()
@@ -148,14 +167,15 @@ static class FileReader
         
     }
 
-    public static async Task JsonFileReader()
+    public static async Task<Pokemon> JsonFileReader()
     {
-        string fullPath = filePath + ".json";
+        // string fullPath = filePath + ".json";
+        string fullPath = @"C:\Users\smaur\Code\Kea\SystemIntegration\Assignments\01a\Files\Pokemon.json";
 
         if(!File.Exists(fullPath))
         {
             Console.WriteLine("Filen blev ikke fundet: " + fullPath);
-            return;
+            return null;
         }
 
         try
@@ -187,15 +207,18 @@ static class FileReader
                     {
                         Console.WriteLine("Kunne ikke deserialisere 'pokemon'-noden.");
                     }
+                    return pokemon;
                 }
                 else
                 {
                     Console.WriteLine("Nøglen 'pokemon' blev ikke fundet i JSON-filen.");
+                    return null;
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Der opstod en fejl under parsing af JSON: " + ex.Message);
+                return null;
             }
     }
 }
